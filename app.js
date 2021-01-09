@@ -3,7 +3,7 @@ var cashAmount = document.querySelector("#input2");
 var btnCalc = document.querySelector("#calc");
 var outputDiv = document.querySelector("#output");
 
-function clickHandler(){
+function clickHandler() {
     var bill = parseInt(billAmount.value);
     var cash = parseInt(cashAmount.value);
     var amount = cash - bill;
@@ -11,36 +11,27 @@ function clickHandler(){
     noteCounter = [];
     outputPrint = [];
 
-    for(i=0; i<7;i++){
+    for (i = 0; i < 7; i++) {
 
-        if(amount >= notes[i]){
+        if (amount >= notes[i]) {
             var answer = Math.floor(amount / notes[i]);
-            
+
             noteCounter[i] = answer;
-            
-            amount = amount - noteCounter[i]*notes[i];
-        }else{
+
+            amount = amount - noteCounter[i] * notes[i];
+        } else {
             noteCounter[i] = 0;
         }
-        
-
     }
 
-    for(i=0; i<7;i++){
+    for (i = 0; i < 7; i++) {
 
-        if (noteCounter[i] !=0){
-            outputPrint[i]=("Number of notes of "+notes[i] + "=" + noteCounter[i]+ ('\r\n'));
+        if (noteCounter[i] != 0) {
+            outputPrint[i] = ("Number of notes of " + notes[i] + "=" + noteCounter[i] + ('\r\n'));
         }
     }
 
     outputDiv.innerText = outputPrint;
-  
-
 }
-
- 
- 
-
-
 
 btnCalc.addEventListener("click", clickHandler);
