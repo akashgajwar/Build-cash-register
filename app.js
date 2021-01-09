@@ -9,29 +9,31 @@ function clickHandler(){
     var amount = cash - bill;
     var notes = [2000, 500, 100, 20, 10, 5, 1];
     noteCounter = [];
+    outputPrint = [];
 
     for(i=0; i<7;i++){
 
         if(amount >= notes[i]){
-            const answer = amount / notes[i];
-            var ping = answer.substring(0,1);
-            noteCounter[i] = ping;
-            amoumt = amount % notes[i];
-            // amount = amount - noteCounter[i]*notes[i];
+            var answer = Math.floor(amount / notes[i]);
+            
+            noteCounter[i] = answer;
+            
+            amount = amount - noteCounter[i]*notes[i];
         }else{
             noteCounter[i] = 0;
         }
+        
 
     }
 
     for(i=0; i<7;i++){
 
         if (noteCounter[i] !=0){
-            console.log("The denomination of "+ notes[i] + ":" + noteCounter[i]);
+            outputPrint[i]=("Number of notes of "+notes[i] + "=" + noteCounter[i]+ ('\r\n'));
         }
     }
 
-    
+    outputDiv.innerText = outputPrint;
   
 
 }
